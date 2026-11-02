@@ -39,3 +39,5 @@ html{scroll-padding-top:82px}
   .product-foot{flex-direction:column;align-items:stretch}
   .about-brand-logo{width:72%!important}
 }
+
+.about-brand-logo{mix-blend-mode:normal!important}

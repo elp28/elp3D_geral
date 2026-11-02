@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+ match /databases/{database}/documents {
+  // Substitua ADMIN_UID pelo UID da conta cadastrada no Firebase Authentication.
+  function isAdmin() { return request.auth != null && request.auth.uid == 'ADMIN_UID_SUBSTITUA_AQUI'; }
+  match /products/{id} {
+   allow read: if true;
+   allow create, update, delete: if isAdmin();
+  }
+  match /sales/{id} {
+   allow read, create, update, delete: if isAdmin();
+  }
+  match /{document=**} { allow read, write: if false; }
+ }
+}

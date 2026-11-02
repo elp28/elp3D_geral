@@ -15,7 +15,9 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script src="firebase-config.js" defer></script>
+  <script src="firebase-config.js" defer></script>
   <script src="script.js" defer></script>
+  <script src="catalog-cloud.js" type="module"></script>
   <script type="module" src="catalog-sync.js"></script>
 </head>
 <body>
@@ -36,7 +38,7 @@
         <h1>Ideias incríveis.<br><span>Formas reais.</span></h1>
         <p>Na ELP3D, a tecnologia encontra a imaginação. Peças impressas em 3D para decorar, presentear, organizar e surpreender — com espaço para criar algo só seu.</p>
         <div class="hero-actions"><a class="btn btn-primary" href="#catalogo">Explorar catálogo <span aria-hidden="true">↗</span></a><a class="btn btn-ghost" href="#personalizados">Quero personalizar <span aria-hidden="true">→</span></a></div>
-        <div class="hero-meta"><span><b>09</b> produtos no catálogo</span><i></i><span><b>100%</b> espaço para ideias</span></div>
+        <div class="hero-meta"><span><b id="catalogCount">09</b> produtos no catálogo</span><i></i><span><b>100%</b> espaço para ideias</span></div>
       </div>
       <div class="hero-visual">
   <div class="hero-frame hero-featured" aria-label="Produtos em destaque">
@@ -64,7 +66,7 @@
 
     <section class="section shell" id="catalogo">
       <div class="section-top"><div><span class="eyebrow section-eyebrow">/ COLEÇÃO ELP3D</span><h2>Encontre seu próximo <em>favorito.</em></h2><p>Detalhes que fazem diferença. Escolha algo especial ou inspire sua próxima ideia.</p></div><span class="section-index">CATÁLOGO / 2026</span></div>
-      <div class="filters" role="group" aria-label="Filtrar produtos"><button type="button" data-filter="Todos" class="filter active" aria-pressed="true">Todos <span>09</span></button><button type="button" data-filter="Decoração" class="filter" aria-pressed="false">Decoração</button><button type="button" data-filter="Acessórios" class="filter" aria-pressed="false">Acessórios</button><button type="button" data-filter="Sensoriais" class="filter" aria-pressed="false">Sensoriais</button></div>
+      <div class="filters" role="group" aria-label="Filtrar produtos"><button type="button" data-filter="Todos" class="filter active" aria-pressed="true">Todos <span id="filterCount">09</span></button><button type="button" data-filter="Decoração" class="filter" aria-pressed="false">Decoração</button><button type="button" data-filter="Acessórios" class="filter" aria-pressed="false">Acessórios</button><button type="button" data-filter="Sensoriais" class="filter" aria-pressed="false">Sensoriais</button></div>
       <div class="product-grid" id="productGrid" aria-live="polite"></div>
       <p class="catalog-note">Todos os acessórios são oferecidos em diferentes cores, conforme disponibilidade. Para escolher sua cor ou encomendar uma personalização, informe sua preferência no carrinho ou pelo WhatsApp.</p>
     </section>

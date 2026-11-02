@@ -68,3 +68,19 @@ html{scroll-padding-top:82px}
 @media(max-width:950px){.hero{gap:35px}.hero-featured .hero-frame-bottom{padding-inline:7px}.featured-image-wrap{aspect-ratio:1.1}}
 @media(max-width:680px){.hero{gap:32px}.hero-featured{width:100%;max-width:450px;margin:auto;transform:none!important}.hero-frame-top{padding:12px 6px}.featured-image-wrap{aspect-ratio:1.35}.hero-featured .hero-frame-bottom{min-height:78px}.hero-featured .hero-frame-bottom strong{font-size:18px}.hero-featured .hero-frame-bottom>span{font-size:14px}.hero-actions{align-items:stretch}.hero-meta{gap:12px;flex-wrap:wrap}.featured-controls{padding-bottom:5px}.hero-visual{padding:0 2px}.product-card,.product-info,.product-foot{min-width:0}.product-foot{display:flex;flex-direction:column;align-items:stretch}.add-button{width:100%}}
 @media(max-width:390px){.hero-featured .hero-frame-bottom strong{font-size:16px}.hero-featured .hero-frame-bottom>span{font-size:12px}.hero-meta{font-size:11px}.featured-image-wrap{aspect-ratio:1.24}}
+
+/* Mobile viewport safety net — also works when a device shows a desktop-sized viewport. */
+@media screen and (max-width:1024px), screen and (hover:none) and (pointer:coarse) {
+  html,body{width:100%;max-width:100%;overflow-x:clip}
+  main,.site-header,.footer{width:100%;max-width:100%;min-width:0}
+  .shell{width:100%!important;max-width:100%!important;min-width:0!important}
+  .hero{display:flex!important;flex-direction:column;min-height:0;overflow:clip;isolation:isolate}
+  .hero-orbit,.hero-float{display:none!important}
+  .hero-copy,.hero-visual{width:100%;max-width:100%;min-width:0}
+  .hero-featured{width:100%;max-width:100%;transform:none!important}
+  .desktop-nav{display:none}
+  .mobile-nav{display:flex;position:fixed;left:0;right:0;bottom:0;width:100%}
+  .cart-drawer{width:100%!important;max-width:100%!important;left:0!important;right:0!important;top:0;bottom:0;overflow:hidden;display:flex;flex-direction:column}
+  .cart-body{min-height:0;flex:1 1 auto;overflow-y:auto}
+  .cart-footer{flex:0 0 auto}
+}

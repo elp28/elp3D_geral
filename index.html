@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#050a19" />
+  <meta name="description" content="ELP3D — Produtos impressos em 3D com criatividade, cuidado e personalidade. Explore nosso catálogo e peça pelo WhatsApp." />
+  <meta property="og:title" content="ELP3D — Suas ideias ganham forma" />
+  <meta property="og:description" content="Peças únicas, decoração, acessórios e impressões personalizadas. Conheça nosso catálogo." />
+  <meta property="og:type" content="website" />
+  <title>ELP3D — Suas ideias ganham forma</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="page-glow" aria-hidden="true"></div>
+  <header class="site-header" id="topo">
+    <div class="shell header-inner">
+      <a class="brand" href="#inicio" aria-label="ELP3D, início"><span class="brand-mark">E<span>3</span></span><span class="brand-text">ELP<span>3D</span><small>IMPRESSÃO 3D</small></span></a>
+      <nav class="desktop-nav" aria-label="Navegação principal"><a href="#inicio">Início</a><a href="#catalogo">Catálogo</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a></nav>
+      <button class="cart-trigger" id="openCart" type="button" aria-label="Abrir carrinho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 4 2 2 2 11h11l3-9H6"/><circle cx="9" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg><span>Carrinho</span><span class="cart-count" id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero shell" id="inicio">
+      <div class="hero-orbit orbit-one" aria-hidden="true"></div><div class="hero-orbit orbit-two" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="signal"></span> CRIATIVIDADE EM CADA CAMADA</span>
+        <h1>Ideias incríveis.<br><span>Formas reais.</span></h1>
+        <p>Na ELP3D, a tecnologia encontra a imaginação. Peças impressas em 3D para decorar, presentear, organizar e surpreender — com espaço para criar algo só seu.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#catalogo">Explorar catálogo <span aria-hidden="true">↗</span></a><a class="btn btn-ghost" href="#personalizados">Quero personalizar <span aria-hidden="true">→</span></a></div>
+        <div class="hero-meta"><span><b>09</b> produtos no catálogo</span><i></i><span><b>100%</b> espaço para ideias</span></div>
+      </div>
+      <div class="hero-visual"><div class="hero-frame"><div class="hero-frame-top"><span class="frame-dot"></span> EM DESTAQUE <span>01 / 09</span></div><img src="assets/ovo-dragao.webp" alt="Ovo de dragão decorativo impresso em 3D" fetchpriority="high"><div class="hero-frame-bottom"><div><small>PEÇAS QUE SURPREENDEM</small><strong>Ovo de Dragão</strong></div><span>R$ 25,00</span></div></div><div class="hero-float float-a">✦ <span>Feito em 3D</span></div><div class="hero-float float-b">Criativo por natureza. <span>↗</span></div></div>
+    </section>
+
+    <div class="ticker" aria-label="Impressão 3D, criatividade e personalização"><div>CRIATIVIDADE <span>✳</span> IMPRESSÃO 3D <span>✳</span> PERSONALIZAÇÃO <span>✳</span> FEITO COM CUIDADO <span>✳</span> CRIATIVIDADE <span>✳</span> IMPRESSÃO 3D <span>✳</span> PERSONALIZAÇÃO <span>✳</span> FEITO COM CUIDADO <span>✳</span></div></div>
+
+    <section class="section shell" id="catalogo">
+      <div class="section-top"><div><span class="eyebrow section-eyebrow">/ COLEÇÃO ELP3D</span><h2>Encontre seu próximo <em>favorito.</em></h2><p>Detalhes que fazem diferença. Escolha algo especial ou inspire sua próxima ideia.</p></div><span class="section-index">CATÁLOGO / 2026</span></div>
+      <div class="filters" role="group" aria-label="Filtrar produtos"><button type="button" data-filter="Todos" class="filter active" aria-pressed="true">Todos <span>09</span></button><button type="button" data-filter="Decoração" class="filter" aria-pressed="false">Decoração</button><button type="button" data-filter="Acessórios" class="filter" aria-pressed="false">Acessórios</button><button type="button" data-filter="Sensoriais" class="filter" aria-pressed="false">Sensoriais</button></div>
+      <div class="product-grid" id="productGrid" aria-live="polite"></div>
+      <p class="catalog-note">Os itens são produzidos por impressão 3D. Cores e pequenos detalhes podem variar conforme a produção. Para outras cores ou tamanhos, consulte a disponibilidade.</p>
+    </section>
+
+    <section class="custom-section shell" id="personalizados"><div class="custom-panel"><div class="custom-pattern" aria-hidden="true"></div><div class="custom-icon" aria-hidden="true">✳</div><div class="custom-copy"><span class="eyebrow">/ FEITO PRA VOCÊ</span><h2>Imaginou? <span>Vamos criar.</span></h2><p>Uma lembrança, um presente com nome, um acessório diferente ou uma peça especial. Conte sua ideia e a gente conversa sobre as possibilidades.</p><button type="button" class="btn btn-primary" id="customButton">Adicionar pedido personalizado <span aria-hidden="true">↗</span></button><small>Orçamento sob consulta · Sem pagamento antecipado pelo site</small></div><div class="custom-shape" aria-hidden="true"><div class="shape-ring ring1"></div><div class="shape-ring ring2"></div><div class="shape-core">3D<span>✦</span></div></div></div></section>
+
+    <section class="section about-section shell" id="sobre"><div class="about-art"><img class="about-brand-logo" src="assets/logo.png" alt="Logotipo ELP3D com linhas azuis" loading="lazy"/><div class="about-line line-one"></div><div class="about-line line-two"></div><div class="about-art-footer"><span>DESIGN · TECNOLOGIA · CRIATIVIDADE</span><span>EST. 2026</span></div></div><div class="about-copy"><span class="eyebrow">/ NOSSA ESSÊNCIA</span><h2>Mais do que peças.<br><em>Possibilidades.</em></h2><p>A ELP3D nasceu da vontade de transformar criatividade em algo que você pode segurar nas mãos. Cada produto é uma oportunidade de experimentar novas formas, ideias e detalhes.</p><p>Fundada por <strong>Erick Lichtenfels Pudell</strong>, nossa iniciativa valoriza qualidade, confiança e uma comunicação aberta: queremos ouvir sua ideia e explorar, juntos, como tirá-la do papel.</p><div class="value-list"><span>01 / Criatividade</span><span>02 / Confiança</span><span>03 / Personalização</span></div></div></section>
+
+    <section class="contact-section shell" id="contato"><div class="contact-panel"><div><span class="eyebrow">/ VAMOS CONVERSAR?</span><h2>Uma boa ideia começa <em>com uma conversa.</em></h2><p>Tem alguma dúvida sobre um produto ou uma criação especial em mente? Fale diretamente com a ELP3D.</p><div class="contact-links"><a href="https://wa.me/5548991974250" target="_blank" rel="noopener noreferrer"><span class="contact-symbol">↗</span><span><small>WHATSAPP</small><strong>(48) 9 9197-4250</strong></span><span aria-hidden="true">↗</span></a><a href="mailto:elp3dd@gmail.com"><span class="contact-symbol">@</span><span><small>E-MAIL</small><strong>elp3dd@gmail.com</strong></span><span aria-hidden="true">↗</span></a></div></div><aside class="contact-aside"><span>COMPRAS PRESENCIAIS</span><strong>Escolheu pessoalmente?<br>É só conversar!</strong><p>Não precisa passar pelo carrinho. Para outros pedidos, monte sua seleção aqui no site e envie pelo WhatsApp.</p><span class="asterisk" aria-hidden="true">✳</span></aside></div></section>
+  </main>
+
+  <footer class="footer"><div class="shell"><div class="footer-upper"><a href="#inicio" class="footer-logo">ELP<span>3D</span></a><p>Suas ideias ganham forma.</p><a href="#topo">Voltar ao topo ↑</a></div><div class="footer-bottom"><span>© <span id="year"></span> ELP3D. Criatividade em cada camada.</span><span>Feito com cuidado, do conceito à impressão.</span></div></div></footer>
+
+  <nav class="mobile-nav" aria-label="Navegação para celular"><a href="#inicio"><span>⌂</span>Início</a><a href="#catalogo"><span>▦</span>Catálogo</a><a href="#sobre"><span>✳</span>Sobre</a><a href="#contato"><span>↗</span>Contato</a></nav>
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true" tabindex="-1"><div class="drawer-head"><div><span class="eyebrow">/ MEUS ESCOLHIDOS</span><h2 id="cartTitle">Seu carrinho <span id="drawerCount">(0)</span></h2></div><button type="button" class="icon-button" id="closeCart" aria-label="Fechar carrinho">×</button></div><div class="cart-body"><div id="cartItems" class="cart-items"></div><div class="cart-custom"><label for="customerName">Seu nome <span>(opcional)</span></label><input id="customerName" type="text" maxlength="90" autocomplete="name" placeholder="Como podemos chamar você?"/><label for="orderNotes">Observações <span>(opcional)</span></label><textarea id="orderNotes" maxlength="700" rows="2" placeholder="Cor, detalhes ou alguma dúvida..."></textarea></div></div><div class="cart-footer"><div class="total-row"><span>Subtotal dos itens</span><strong id="cartTotal">R$ 0,00</strong></div><p>Itens personalizados têm valor sob orçamento. Frete e disponibilidade são combinados no WhatsApp.</p><button type="button" class="btn btn-primary checkout" id="checkout">Enviar pedido pelo WhatsApp <span aria-hidden="true">↗</span></button><small>Você não paga nada por aqui. Vamos confirmar seu pedido por mensagem.</small></div></aside>
+  <div class="modal-overlay" id="customOverlay" hidden><section class="custom-modal" role="dialog" aria-modal="true" aria-labelledby="customTitle" tabindex="-1"><button type="button" class="icon-button modal-close" id="closeCustom" aria-label="Fechar">×</button><span class="eyebrow">/ SUA CRIAÇÃO</span><h2 id="customTitle">Conte sua ideia.</h2><p>Vamos avaliar juntos as possibilidades e preparar um orçamento personalizado.</p><form id="customForm"><label for="customName">Que peça você imagina?</label><input id="customName" maxlength="90" required placeholder="Ex.: Chaveiro com meu nome"/><label for="customDescription">Descreva seu pedido</label><textarea id="customDescription" rows="5" maxlength="1000" required placeholder="Conte como você imagina, cores, tamanho aproximado, quantidade..."></textarea><button type="submit" class="btn btn-primary">Adicionar ao carrinho <span aria-hidden="true">＋</span></button></form></section></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

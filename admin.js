@@ -1,13 +1,12 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
 import { getFirestore, collection, doc, setDoc, addDoc, deleteDoc, onSnapshot, query, orderBy } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-storage.js';
 const $=s=>document.querySelector(s);
 const money=v=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(v||0);
 const fmtDate=d=>{const [y,m,day]=d.split('-');return [day,m,y].join('/')};
 const config=window.ELP3D_FIREBASE_CONFIG;
 const adminUid=window.ELP3D_ADMIN_UID;
-let db,auth,storage,products=[],sales=[],unsubscribe=[],currentUser=null;
+let db,auth,products=[],sales=[],unsubscribe=[],currentUser=null;
 const defaults=[
 {id:'estrela',name:'Estrela Sensorial',price:25,category:'Sensoriais',description:'Estrela sensorial com design geométrico e movimento agradável para explorar com as mãos.',image:'assets/estrela.webp'},
 {id:'ovo-dragao',name:'Ovo de Dragão Articulado',price:25,category:'Decoração',description:'Um ovo especial que abre e revela seu interior. Uma peça divertida e cheia de fantasia.',image:'assets/ovo-dragao.webp'},
@@ -25,7 +24,7 @@ function show(id){$('#setup').hidden=id!=='setup';$('#loginPanel').hidden=id!=='
 const configured=!!(config?.apiKey&&config?.projectId&&adminUid&&adminUid!=='ADMIN_UID_SUBSTITUA_AQUI');
 if(!configured){show('setup')}else{
  try{
-  const app=initializeApp(config,'elp3d-admin');auth=getAuth(app);db=getFirestore(app);storage=getStorage(app);
+  const app=initializeApp(config,'elp3d-admin');auth=getAuth(app);db=getFirestore(app);
   onAuthStateChanged(auth,user=>{
    unsubscribe.forEach(f=>f());unsubscribe=[];
    if(user&&user.uid===adminUid){currentUser=user;show('dashboard');subscribe();}
@@ -54,15 +53,14 @@ function renderProducts(){const list=$('#productList');list.replaceChildren();if
 function openEditor(){ $('#productForm').hidden=false;$('#productForm').scrollIntoView({behavior:'smooth',block:'start'})}
 function resetEditor(){ $('#productForm').reset();$('#productId').value='';$('#productActive').checked=true;$('#productOrder').value=99;$('#productFormTitle').textContent='Novo produto';$('#productForm').hidden=true;feedback('#productFeedback','')}
 $('#newProduct').addEventListener('click',()=>{resetEditor();openEditor()});$('#cancelProduct').addEventListener('click',resetEditor);
-function editProduct(p){resetEditor();$('#productId').value=p.id;$('#productName').value=p.name;$('#productPrice').value=p.price;$('#productCategory').value=p.category;$('#productOrder').value=p.sortOrder??99;$('#productDescription').value=p.description;$('#productImageUrl').value=/^https:/.test(p.image)?p.image:'';$('#productActive').checked=p.active!==false;$('#productFormTitle').textContent='Editar '+p.name;openEditor()}
+function editProduct(p){resetEditor();$('#productId').value=p.id;$('#productName').value=p.name;$('#productPrice').value=p.price;$('#productCategory').value=p.category;$('#productOrder').value=p.sortOrder??99;$('#productDescription').value=p.description;$('#productImageUrl').value=p.image||'';$('#productActive').checked=p.active!==false;$('#productFormTitle').textContent='Editar '+p.name;openEditor()}
 $('#productForm').addEventListener('submit',async e=>{e.preventDefault();if(!currentUser)return;
  const b=$('#saveProduct');b.disabled=true;feedback('#productFeedback','Salvando…');
  try{
   const id=$('#productId').value||'item-'+crypto.randomUUID();const old=products.find(p=>p.id===id);
-  let image=old?.image||'';const file=$('#productImage').files[0];const url=$('#productImageUrl').value.trim();
-  if(file){if(file.size>8*1024*1024||!file.type.startsWith('image/'))throw Error('Escolha uma imagem de até 8 MB.');const suffix=file.name.split('.').pop()?.toLowerCase()?.replace(/[^a-z0-9]/g,'')||'jpg';const storageRef=ref(storage,'products/'+Date.now()+'-'+crypto.randomUUID()+'.'+suffix);await uploadBytes(storageRef,file,{contentType:file.type});image=await getDownloadURL(storageRef);}
-  else if(url){if(!url.startsWith('https://'))throw Error('A URL da imagem deve começar com https://');image=url}
-  if(!image)throw Error('Selecione uma imagem ou informe sua URL.');
+  const image=$('#productImageUrl').value.trim()||old?.image||'';
+  const localAsset=/^assets\/[a-z0-9._-]+\.(?:webp|png|jpe?g|avif)$/i.test(image);
+  if(!image||(!localAsset&&!image.startsWith('https://')))throw Error('Informe um caminho em assets/nome.webp ou um link de imagem https://. Envie o arquivo primeiro pelo GitHub.');
   const data={name:$('#productName').value.trim(),price:Number($('#productPrice').value),category:$('#productCategory').value,description:$('#productDescription').value.trim(),image,active:$('#productActive').checked,sortOrder:Number($('#productOrder').value)||0};
   if(!data.name||!data.description||!Number.isFinite(data.price)||data.price<0)throw Error('Verifique os dados do produto.');
   await setDoc(doc(db,'products',id),data);

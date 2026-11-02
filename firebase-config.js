@@ -1,6 +1,6 @@
 /* Configuração pública do seu projeto Firebase. NÃO coloque senha ou chave de serviço aqui. 
    Copie o objeto firebaseConfig do console Firebase após configurar autenticação e Firestore. */
-window.ELP3D_FIREBASE_CONFIG = const firebaseConfig = {
+window.ELP3D_FIREBASE_CONFIG = {
   apiKey: "AIzaSyDyFTgpuD0gHPGEkRGm_FUkD8dpeZWJjlo",
   authDomain: "elp3d-5e355.firebaseapp.com",
   projectId: "elp3d-5e355",
